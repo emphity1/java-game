@@ -1,12 +1,11 @@
 package game;
 
 
-public class Launcher{
+public class Launcher {
 
-    public static void main(String[] args){
-        new Game("My Game",600,600);
-    }
-
-
-
+	public static void main(String[] args){
+		Game game = new Game("My Game!", 800, 800);
+		game.start();
+	}
+	
 }
