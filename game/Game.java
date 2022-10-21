@@ -2,8 +2,12 @@ package game;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+
+import game.input.KeyManager;
+import game.states.GameState;
+import game.states.MenuState;
+import game.states.State;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -26,23 +30,43 @@ public class Game implements Runnable {
 	private Graphics g;
 	
 
+	//States
+	private State gameState;
+	private State menuState;
+	//input
+	private KeyManager keyManager;
+
+
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		keyManager = new KeyManager();
 	}
 	
 	private void init(){
 		display = new Display(title, width, height);
+		display.getFrame().addKeyListener(keyManager);
+
 		Assets.init();
+		gameState = new GameState(this);
+		menuState = new MenuState(this);
+		
+		State.setState(gameState);
+
+
         
     }
 
-	int x = 0;
+	
 
 	
 	private void tick(){
-		x += 1;
+		keyManager.tick();
+		
+		if(State.getState() != null){
+			State.getState().tick();
+		}
 	}
 	
 	private void render(){
@@ -54,9 +78,9 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
 		//Draw stuff
-		g.drawImage(Assets.grass, x, 10, null);
-		g.drawImage(Assets.player,50,50,null);
-		g.drawImage(Assets.fence, 30, 30, null);
+		if(State.getState() != null){
+			State.getState().render(g);
+		}
 
 		//End 
 		bs.show();
@@ -99,6 +123,9 @@ public class Game implements Runnable {
 		stop();
 	}
 	
+	public KeyManager getKeyManager(){
+		return keyManager;
+	}
 	public synchronized void start(){
 		if(running)
 			return;
