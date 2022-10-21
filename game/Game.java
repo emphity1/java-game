@@ -25,7 +25,6 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-    private BufferedImage testImage;
 
 	public Game(String title, int width, int height){
 		this.width = width;
@@ -38,8 +37,12 @@ public class Game implements Runnable {
 		Assets.init();
         
     }
+
+	int x = 0;
+
+	
 	private void tick(){
-		
+		x += 1;
 	}
 	
 	private void render(){
@@ -51,7 +54,7 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
 		//Draw stuff
-		g.drawImage(Assets.grass, 10, 10, null);
+		g.drawImage(Assets.grass, x, 10, null);
 		g.drawImage(Assets.player,50,50,null);
 		g.drawImage(Assets.fence, 30, 30, null);
 
@@ -61,18 +64,39 @@ public class Game implements Runnable {
 	}
 	
 
-    //threads stuf...
+    //threads stuff...
 	public void run(){
-		
+		//let's make the game run smooth at 60fps
 		init();
+		int fps = 60;
+		double timePerTick = 1000000000 /fps; //nano sec. Max time we allow to render tick method
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime(); //current time of PC in nano sec.
+		long timer = 0;
+		int ticks = 0;
+
 		
 		while(running){
-			tick();
-			render();
+			now = System.nanoTime();
+			delta += (now-lastTime)/timePerTick; //how much time we have untill we have to call tick() and render()
+			timer += now-lastTime;
+			lastTime = now;
+
+			if(delta >= 1){
+				tick();
+				render();
+				ticks++;
+				delta--;
+			}
+			if(timer >= 1000000000){
+				System.out.println("Ticks/Frames:" + ticks);
+				ticks = 0;
+				timer = 0;
+			}
 		}
 		
 		stop();
-		
 	}
 	
 	public synchronized void start(){
