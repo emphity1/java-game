@@ -17,6 +17,8 @@ public class Game implements Runnable {
 	public int width, height;
 	public String title;
 	
+	
+
 	private boolean running = false;
 	private Thread thread;
 	
@@ -33,12 +35,7 @@ public class Game implements Runnable {
 	
 	private void init(){
 		display = new Display(title, width, height);
-        try {
-            testImage = ImageIO.read(new File("/home/dima/Documents/GitHub/java-game/game/res/textures/godot.png"));
-        } catch (IOException e) {
-            
-            e.printStackTrace();
-        }
+		Assets.init();
         
     }
 	private void tick(){
@@ -54,8 +51,9 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
 		//Draw stuff
-		
-		g.drawImage(testImage, 20, 20, null);
+		g.drawImage(Assets.grass, 10, 10, null);
+		g.drawImage(Assets.player,50,50,null);
+		g.drawImage(Assets.fence, 30, 30, null);
 
 		//End 
 		bs.show();
