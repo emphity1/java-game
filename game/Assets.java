@@ -10,8 +10,8 @@ public class Assets {
 
     public static BufferedImage player,grass,fence,biom,water;
 
-    public static final int Width = 48, height = 48;
-    public static final int GrassWidth = 48, GrassHeight = 48;
+    public static final int Width = 8, height = 8;
+    public static final int fenceWidth = 16, fenceHeight = 48;
     public static final int PlayerWidth = 48, PlayerHeight = 48;
 
     public static void init(){
@@ -20,9 +20,9 @@ public class Assets {
         SpriteSheet FenceSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Tilesets/Fences.png"));
 
         
-        grass = GrassSheet.crop(0, 0, GrassWidth, GrassHeight);
+        grass = GrassSheet.crop(0,80, Width,height);
         player = PlayerSheet.crop(0, 0, PlayerWidth, PlayerHeight);
-        fence = FenceSheet.crop(16, 16, Width, height);
+        fence = FenceSheet.crop(0, 10, fenceWidth,fenceHeight);
     }
     
 }

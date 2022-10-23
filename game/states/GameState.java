@@ -3,7 +3,9 @@ package game.states;
 import java.awt.Graphics;
 
 import game.Assets;
+import game.entities.creatures.Creatures;
 import game.entities.creatures.Player;
+import game.tile.Tile;
 import game.*;
 
 public class GameState extends State {
@@ -26,7 +28,14 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-        player.render(g);    
+        player.render(g);   
+        
+        Tile.tiles[0].render(g,0,0);
+        Tile.tiles[0].render(g,8,8);
+        Tile.tiles[0].render(g,16,16);
+        Tile.tiles[0].render(g,24,24);
+        
+        Tile.tiles[1].render(g, 0, 0);
     }
     
 }
