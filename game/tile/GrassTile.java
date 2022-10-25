@@ -1,7 +1,5 @@
 package game.tile;
 
-import java.awt.image.BufferedImage;
-
 import game.Assets;
 
 public class GrassTile extends Tile {
