@@ -6,6 +6,8 @@ public abstract class Creatures extends Entity {
 	
 	public static final int DEFAULT_HEALTH = 10;
 	public static final float DEFAULT_SPEED = 3.0f;
+
+	//CREATURE SIZE
 	public static final int DEFAULT_CREATURE_WIDTH = 32,
 							DEFAULT_CREATURE_HEIGHT = 32;
 	
