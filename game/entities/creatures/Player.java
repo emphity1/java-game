@@ -7,17 +7,17 @@ import game.Game;;
 
 public class Player extends Creatures {
 
-	private Game game;
+	
 	
 	public Player(Game game, float x, float y) {
-		super(x, y, Creatures.DEFAULT_CREATURE_WIDTH, Creatures.DEFAULT_CREATURE_HEIGHT);
-		this.game = game;
+		super(game,x, y, Creatures.DEFAULT_CREATURE_WIDTH, Creatures.DEFAULT_CREATURE_HEIGHT);
 	}
 
 	@Override
 	public void tick() {
 		getInput();
 		move();
+		game.getGameCamera().centerOnEntity(this);
 	}
 	
 	private void getInput(){
@@ -36,7 +36,8 @@ public class Player extends Creatures {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.player, (int) x, (int) y, width, height, null);
+		g.drawImage(Assets.player, (int) (x - game.getGameCamera().getXOffset()),  //centering our player as well
+					(int) (y - game.getGameCamera().getYOffset()), width, height, null);
 	}
 
 }

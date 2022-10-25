@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import game.GameCamera.GameCamera;
 import game.input.KeyManager;
 import game.states.GameState;
 import game.states.MenuState;
@@ -18,7 +19,7 @@ import java.awt.Color;
 public class Game implements Runnable {
 
 	private Display display;
-	public int width, height;
+	private int width, height;
 	public String title;
 	
 	
@@ -36,6 +37,10 @@ public class Game implements Runnable {
 	//input
 	private KeyManager keyManager;
 
+	//camera istance
+	private GameCamera gameCamera;
+	
+
 
 	public Game(String title, int width, int height){
 		this.width = width;
@@ -47,6 +52,8 @@ public class Game implements Runnable {
 	private void init(){
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
+
+		gameCamera = new GameCamera(this,0, 0);
 
 		Assets.init();
 		gameState = new GameState(this);
@@ -126,6 +133,18 @@ public class Game implements Runnable {
 	public KeyManager getKeyManager(){
 		return keyManager;
 	}
+
+	public GameCamera getGameCamera(){
+		return gameCamera;
+	}
+
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
+	}
+
 	public synchronized void start(){
 		if(running)
 			return;

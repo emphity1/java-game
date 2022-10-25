@@ -3,6 +3,7 @@ package game.worlds;
 
 import java.awt.Graphics;
 
+import game.Game;
 import game.tile.Tile;
 import game.utils.Utils;
 
@@ -10,12 +11,15 @@ import game.utils.Utils;
 
 public class World {
 
+	private Game game;
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
 	
-	public World(String path){
+	public World(Game game, String path){
+		this.game = game;
 		loadWorld(path);
+		
 	}
 	
 	public void tick(){
@@ -25,9 +29,11 @@ public class World {
 	public void render(Graphics g){
 		for(int y = 0;y < height;y++){
 			for(int x = 0;x < width;x++){
-				getTile(x, y).render(g, x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT);
+				getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - game.getGameCamera().getXOffset()),
+									(int) (y * Tile.TILEHEIGHT - game.getGameCamera().getYOffset()));
 			}
 		}
+
 	}
 	
 	public Tile getTile(int x, int y){

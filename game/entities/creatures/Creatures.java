@@ -1,5 +1,6 @@
 package game.entities.creatures;
 
+import game.Game;
 import game.entities.Entity;
 
 public abstract class Creatures extends Entity {
@@ -15,8 +16,8 @@ public abstract class Creatures extends Entity {
 	protected float speed;
 	protected float xMove, yMove;
 
-	public Creatures(float x, float y, int width, int height) {
-		super(x, y, width, height);
+	public Creatures(Game game,float x, float y, int width, int height) {
+		super(game,x, y, width, height);
 		health = DEFAULT_HEALTH;
 		speed = DEFAULT_SPEED;
 		xMove = 0;

@@ -10,7 +10,7 @@ public class Assets {
 
     public static BufferedImage player,grass,fence,biom,water;
 
-    public static final int Width = 16, height = 16;
+    public static final int width = 16, height = 16;
     
     //LOADING MY SPRITES AND CROPING THEM
     public static void init(){
@@ -19,9 +19,9 @@ public class Assets {
         SpriteSheet FenceSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Tilesets/Fences.png"));
 
         
-        grass = GrassSheet.crop(0,80, Width,height);
-        player = PlayerSheet.crop(16, 16, Width, height);
-        fence = FenceSheet.crop(0, 0, Width,height);
+        grass = GrassSheet.crop(0,80, width,height);
+        player = PlayerSheet.crop(16, 16, width, height);
+        fence = FenceSheet.crop(0, 0, width,height);
     }
     
 }

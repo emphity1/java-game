@@ -2,12 +2,17 @@ package game.entities;
 
 import java.awt.Graphics;
 
+import game.Game;
+
 /*Entity -> Creatures -> player
  */
 
 
 
 public abstract class Entity {
+
+
+	protected Game game;
 
 	protected float x;
 	protected float y;
@@ -53,11 +58,13 @@ public abstract class Entity {
 
 
 	
-	public Entity(float x, float y,int width,int height){
+	public Entity(Game game,float x, float y,int width,int height){
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
+
+		this.game = game;
 	}
 	
 	public abstract void tick();

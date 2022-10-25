@@ -14,7 +14,8 @@ public class GameState extends State {
     public GameState(Game game){
         super(game);
         player = new Player(game,100, 100);
-        world = new World("/home/dima/Documents/GitHub/java-game/game/world1.txt");
+        world = new World(game,"/home/dima/Documents/GitHub/java-game/game/world1.txt"); //WORLD LOAD PATH
+
     }
 
 
