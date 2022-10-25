@@ -26,14 +26,24 @@ public class World {
 		
 	}
 	
+	/* --PERFORMACE:
+	 * Rendering func rendering our tiles just when we are moving around and not all TILES.
+	 * In case map is big.
+	 */
 	public void render(Graphics g){
-		for(int y = 0;y < height;y++){
-			for(int x = 0;x < width;x++){
+
+		int xStart = (int) Math.max(0, game.getGameCamera().getXOffset() / Tile.TILEWIDTH);
+		int xEnd = (int) Math.min(width, (game.getGameCamera().getXOffset() + game.getWidth()) / Tile.TILEWIDTH +1 );
+		int yStart = (int) Math.max(0, game.getGameCamera().getYOffset() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (game.getGameCamera().getYOffset() + game.getHeight()) / Tile.TILEHEIGHT +1);
+
+
+		for(int y = yStart;y < yEnd;y++){
+			for(int x = xStart;x < xEnd;x++){
 				getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - game.getGameCamera().getXOffset()),
 									(int) (y * Tile.TILEHEIGHT - game.getGameCamera().getYOffset()));
 			}
 		}
-
 	}
 	
 	public Tile getTile(int x, int y){
