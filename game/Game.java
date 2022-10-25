@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.GameCamera.GameCamera;
+import game.handler.Handler;
 import game.input.KeyManager;
 import game.states.GameState;
 import game.states.MenuState;
@@ -39,6 +40,9 @@ public class Game implements Runnable {
 
 	//camera istance
 	private GameCamera gameCamera;
+
+	//Hanlder
+	Handler handler;
 	
 
 
@@ -54,13 +58,13 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keyManager);
 
 		gameCamera = new GameCamera(this,0, 0);
+		handler = new Handler(this);
 
 		Assets.init();
-		gameState = new GameState(this);
-		menuState = new MenuState(this);
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
 		
 		State.setState(gameState);
-
 
         
     }

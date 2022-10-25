@@ -3,6 +3,7 @@ package game.states;
 import java.awt.Graphics;
 
 import game.entities.creatures.Player;
+import game.handler.Handler;
 import game.worlds.World;
 import game.*;
 
@@ -11,11 +12,11 @@ public class GameState extends State {
     private Player player;
     private World world;
 
-    public GameState(Game game){
-        super(game);
-        player = new Player(game,100, 100);
-        world = new World(game,"/home/dima/Documents/GitHub/java-game/game/world1.txt"); //WORLD LOAD PATH
-
+    public GameState(Handler handler){
+        super(handler);
+        world = new World(handler,"/home/dima/Documents/GitHub/java-game/game/world1.txt"); //WORLD LOAD PATH
+        handler.setWorld(world);
+        player = new Player(handler,100, 100);
     }
 
 
