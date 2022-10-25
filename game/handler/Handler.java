@@ -5,6 +5,13 @@ import game.GameCamera.GameCamera;
 import game.input.KeyManager;
 import game.worlds.World;
 
+
+
+/*
+ * Class will be used for collision detection
+ * and i need to have access to the world
+ * 
+ */
 public class Handler {
     private Game game;
     private World world;

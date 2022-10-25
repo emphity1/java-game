@@ -41,18 +41,29 @@ public class World {
 
 		for(int y = yStart;y < yEnd;y++){
 			for(int x = xStart;x < xEnd;x++){
-				getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - handler.getGameCamera().getXOffset()),
+				 getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - handler.getGameCamera().getXOffset()),
 									(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getYOffset()));
 			}
 		}
 	}
 	
+
+
 	public Tile getTile(int x, int y){
+
+		if(x<0 || y<0 || x>=width || y>=height){
+			return Tile.grassTile;
+		}
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
 			return Tile.grassTile;
 		return t;
+
 	}
+
+
+
+
 	/*
 	 * Thanks to Utils and function loadFileAsString i'm taking my world file i created
 	 * splitting my numbers, first 4 i indicated in my file will me my world setup

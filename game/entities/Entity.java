@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import game.Game;
 import game.handler.Handler;
+import java.awt.Rectangle;
 
 /*Entity -> Creatures -> player
  */
@@ -19,6 +20,8 @@ public abstract class Entity {
 	protected float y;
 	protected int width;
 	protected int height;
+
+	protected Rectangle bounds;
 
 	public float getX() {
 		return this.x;
@@ -66,6 +69,8 @@ public abstract class Entity {
 		this.width = width;
 
 		this.handler = handler;
+
+		bounds = new Rectangle(0,0,width,height);
 	}
 	
 	public abstract void tick();
