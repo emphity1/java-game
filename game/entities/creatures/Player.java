@@ -3,7 +3,6 @@ package game.entities.creatures;
 import java.awt.Graphics;
 import java.awt.Color;
 import game.Assets;
-import game.Game;
 import game.handler.Handler;;
 
 public class Player extends Creatures {
@@ -13,7 +12,7 @@ public class Player extends Creatures {
 	public Player(Handler handler, float x, float y) {
 		super(handler,x, y, Creatures.DEFAULT_CREATURE_WIDTH, Creatures.DEFAULT_CREATURE_HEIGHT);
 
-		//collisione box for my player
+		//collisione box for player
 		bounds.x = 8;
 		bounds.y = 16;
 		bounds.width = 16;
@@ -43,12 +42,12 @@ public class Player extends Creatures {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.player, (int) (x - handler.getGameCamera().getXOffset()),  //centering our player as well
-					(int) (y - handler.getGameCamera().getYOffset()), width, height, null);
+		g.drawImage(Assets.player, (int) (x - handler.getGameCamera().getxOffset()),  //centering our player as well
+					(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
 		g.setColor(Color.red);
-		g.fillRect((int)(x + bounds.x - handler.getGameCamera().getXOffset()), 
-		(int)(y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+		g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()), 
+		(int)(y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 	}
 
 }

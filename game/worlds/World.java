@@ -32,35 +32,28 @@ public class World {
 	 * In case map is big.
 	 */
 	public void render(Graphics g){
-
-		int xStart = (int) Math.max(0, handler.getGameCamera().getXOffset() / Tile.TILEWIDTH);
-		int xEnd = (int) Math.min(width, (handler.getGameCamera().getXOffset() + handler.getWidth()) / Tile.TILEWIDTH +1 );
-		int yStart = (int) Math.max(0, handler.getGameCamera().getYOffset() / Tile.TILEHEIGHT);
-		int yEnd = (int) Math.min(height, (handler.getGameCamera().getYOffset() + handler.getHeight()) / Tile.TILEHEIGHT +1);
-
-
+		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
+		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);
+		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT + 1);
+		
 		for(int y = yStart;y < yEnd;y++){
 			for(int x = xStart;x < xEnd;x++){
-				 getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - handler.getGameCamera().getXOffset()),
-									(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getYOffset()));
+				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
+						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
 	}
 	
-
-
 	public Tile getTile(int x, int y){
-
-		if(x<0 || y<0 || x>=width || y>=height){
+		if(x < 0 || y < 0 || x >= width || y >= height)
 			return Tile.grassTile;
-		}
+		
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
 			return Tile.grassTile;
 		return t;
-
 	}
-
 
 
 
@@ -83,6 +76,15 @@ public class World {
 				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
 			}
 		}
+	}
+
+
+
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
 	}
 	
 }

@@ -56,12 +56,6 @@ public abstract class Entity {
 	}
 
 
-
-
-	
-
-
-	
 	public Entity(Handler handler,float x, float y,int width,int height){
 		this.x = x;
 		this.y = y;
