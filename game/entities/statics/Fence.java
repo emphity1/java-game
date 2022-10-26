@@ -2,7 +2,6 @@ package game.entities.statics;
 
 import game.Assets;
 import game.handler.Handler;
-import game.tile.Tile;
 import java.awt.Graphics;
 
 

@@ -1,6 +1,5 @@
 package game.tile;
 
-import java.awt.image.BufferedImage;
 
 import game.Assets;
 

@@ -1,7 +1,6 @@
 package game.entities.statics;
 
 import game.Assets;
-import game.entities.EntityManager;
 import game.handler.Handler;
 import java.awt.Graphics;
 

@@ -3,7 +3,6 @@ package game.worlds;
 
 import java.awt.Graphics;
 
-import game.Game;
 import game.entities.EntityManager;
 import game.entities.creatures.Player;
 import game.entities.statics.Fence;

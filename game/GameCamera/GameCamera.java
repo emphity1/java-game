@@ -2,7 +2,6 @@ package game.GameCamera;
 
 import game.handler.Handler;
 import game.tile.Tile;
-import game.Game;
 import game.entities.Entity;
 
 public class GameCamera {

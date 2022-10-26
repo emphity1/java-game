@@ -1,6 +1,7 @@
 package game.entities;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import game.entities.creatures.Player;
 import game.handler.Handler;
@@ -13,6 +14,18 @@ public class EntityManager {
     private Handler handler;
     private Player player;
     private ArrayList<Entity> entities;
+    
+    //compare our entities which is higher and which is lower, to render my player properly
+    private Comparator<Entity> renderSorter = new Comparator<Entity>(){
+        public int compare(Entity a, Entity b){
+            if(a.getY()+a.getHeight() < b.getY()+b.getHeight()){
+                return -1;
+            }else{
+                return 1;
+            }
+            
+        }
+    };
 
   
     public EntityManager(Handler handler, Player player){
@@ -28,6 +41,8 @@ public class EntityManager {
             e.tick();
         }
         //player.tick();
+        //from function compare
+        entities.sort(renderSorter);
     }
 
     public void render(Graphics g){

@@ -2,11 +2,9 @@ package game.states;
 
 import java.awt.Graphics;
 
-import game.entities.creatures.Player;
 import game.entities.statics.Fence;
 import game.handler.Handler;
 import game.worlds.World;
-import game.*;
 
 public class GameState extends State {
 
