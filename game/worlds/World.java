@@ -4,6 +4,10 @@ package game.worlds;
 import java.awt.Graphics;
 
 import game.Game;
+import game.entities.EntityManager;
+import game.entities.creatures.Player;
+import game.entities.statics.Fence;
+import game.entities.statics.Tree;
 import game.handler.Handler;
 import game.tile.Tile;
 import game.utils.Utils;
@@ -16,15 +20,38 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
+
+	//Entities
+	private EntityManager entityManager;
+
+	public EntityManager getEntityManager() {
+		return this.entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 	public World(Handler handler, String path){
 		this.handler = handler;
-		loadWorld(path);
+		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		//draw fence
+		entityManager.addEntity((new Fence(handler, 50, 50)));
+		entityManager.addEntity((new Fence(handler, 50, 50+32)));
+		entityManager.addEntity((new Fence(handler, 50, 50+32*2)));
+		//draw trees
+		entityManager.addEntity(new Tree(handler, 100, 100, 50, 100) );
+		entityManager.addEntity(new Tree(handler, 250, 250, 50, 100) );
+		entityManager.addEntity(new Tree(handler, 400, 250, 50, 100) );
 		
+		loadWorld(path);
+
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
 	}
 	
 	public void tick(){
-		
+		entityManager.tick();
 	}
 	
 	/* --PERFORMACE:
@@ -43,6 +70,8 @@ public class World {
 						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
+		//Entities
+		entityManager.render(g);
 	}
 	
 	public Tile getTile(int x, int y){

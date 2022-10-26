@@ -1,19 +1,14 @@
 package game;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 import game.GameCamera.GameCamera;
 import game.handler.Handler;
 import game.input.KeyManager;
 import game.states.GameState;
-import game.states.MenuState;
+//import game.states.MenuState;
 import game.states.State;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.Color;
 
 
 
@@ -34,7 +29,7 @@ public class Game implements Runnable {
 
 	//States
 	private State gameState;
-	private State menuState;
+	//private State menuState;
 	//input
 	private KeyManager keyManager;
 
@@ -63,7 +58,7 @@ public class Game implements Runnable {
 
 		Assets.init();
 		gameState = new GameState(handler);
-		menuState = new MenuState(handler);
+		//menuState = new MenuState(handler);
 		
 		State.setState(gameState);
 

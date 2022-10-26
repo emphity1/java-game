@@ -1,6 +1,5 @@
 package game.entities.creatures;
 
-import game.Game;
 import game.entities.Entity;
 import game.handler.Handler;
 import game.tile.Tile;
@@ -27,8 +26,13 @@ public abstract class Creatures extends Entity {
 	}
 	
 	public void move(){
-		moveX();
-		moveY();
+		if(!checkEntityCollisions(xMove, 0f)){
+			moveX();
+		}
+		if(!checkEntityCollisions(0f, yMove)){
+			moveY();
+		}
+		
 	}
 
 	//COLLISION DETECTION STUFF and calculations...
