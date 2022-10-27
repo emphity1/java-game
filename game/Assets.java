@@ -11,12 +11,13 @@ public class Assets {
 
     public static BufferedImage grass,fence,biom,water;
     public static BufferedImage[] player_down,player_up,player_right,player_left,player_stop;
-
+    public static BufferedImage[] btn_start;
     public static BufferedImage tree1,tree2,tree3;
 
     public static final int width = 16, height = 16;
     public static final int fenceWidth = 16, fenceHeight = 48;
     
+    //public static final int btnWidth = 32,  btnHeight = 32;
     //LOADING MY SPRITES AND CROPING THEM
     public static void init(){
 
@@ -24,15 +25,19 @@ public class Assets {
         SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/Basic Charakter Spritesheet.png"));
         SpriteSheet FenceSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Tilesets/Fences.png"));
         SpriteSheet TreeSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic Grass Biom things 1.png"));
+        SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/UI Big Play Button.png"));
 
-
-        //player anim
+        //player anim bufferedimg
         player_down = new BufferedImage[2];
         player_up = new BufferedImage[2];
         player_right = new BufferedImage[2];
         player_left = new BufferedImage[2];
         player_stop = new BufferedImage[2];
+        
+        //menu buffered img
+        btn_start = new BufferedImage[2];
 
+        //player movements
         player_down[0] = PlayerSheet.crop(14*8,2*8,width,height);
         player_down[1] = PlayerSheet.crop(20*8,2*8,width,height);
         player_up[0] = PlayerSheet.crop(14*8,8*8,width,height);
@@ -47,11 +52,16 @@ public class Assets {
         
         //tiles
         grass = GrassSheet.crop(0,80, width,height);
+        //props
         fence = FenceSheet.crop(0, 0, fenceWidth,fenceHeight);
         //trees
         tree1 = TreeSheet.crop(0, 0, 2*8, 4*8);
         tree2 = TreeSheet.crop(2*3, 0, 3*8, 4*8);
+        
+        //menu buttons
 
+        btn_start[0] =  btnSheet.crop(0, 32, 96, 32);
+        btn_start[1] =  btnSheet.crop(96, 32, 96, 32);
     }
 
     public int getFenceWidth(){

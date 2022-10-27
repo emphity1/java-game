@@ -1,7 +1,6 @@
 package game.entities.creatures;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
-import java.awt.Color;
 import game.Assets;
 import game.animations.Animation;
 import game.handler.Handler;;

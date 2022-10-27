@@ -3,6 +3,7 @@ package game;
 import game.GameCamera.GameCamera;
 import game.handler.Handler;
 import game.input.KeyManager;
+import game.input.MouseManager;
 import game.states.GameState;
 //import game.states.MenuState;
 import game.states.State;
@@ -14,6 +15,7 @@ import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
 
+	private MouseManager mouseManager;
 	private Display display;
 	private int width, height;
 	public String title;
@@ -28,8 +30,9 @@ public class Game implements Runnable {
 	
 
 	//States
-	private State gameState;
-	//private State menuState;
+	public State gameState;
+	public State menuState;
+	
 	//input
 	private KeyManager keyManager;
 
@@ -46,17 +49,25 @@ public class Game implements Runnable {
 		this.height = height;
 		this.title = title;
 		keyManager = new KeyManager();
+		mouseManager = new MouseManager();
 	}
 	
 	private void init(){
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
+
+		display.getFrame().addMouseListener(mouseManager);
+		display.getFrame().addMouseMotionListener(mouseManager);
+
+		display.getCanvas().addMouseListener(mouseManager);
+		display.getCanvas().addMouseMotionListener(mouseManager);
+		Assets.init();
 		
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler,0, 0);
 		
 
-		Assets.init();
+		
 		gameState = new GameState(handler);
 		//menuState = new MenuState(handler);
 		
@@ -65,6 +76,7 @@ public class Game implements Runnable {
         
     }
 
+	
 	
 
 	
@@ -132,6 +144,10 @@ public class Game implements Runnable {
 	
 	public KeyManager getKeyManager(){
 		return keyManager;
+	}
+
+	public MouseManager getMouseManager(){
+		return mouseManager;
 	}
 
 	public GameCamera getGameCamera(){
