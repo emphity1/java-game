@@ -2,14 +2,12 @@ package game.states;
 
 import java.awt.Graphics;
 
-import game.entities.statics.Fence;
 import game.handler.Handler;
 import game.worlds.World;
 
 public class GameState extends State {
 
     private World world;
-    private Fence fence;
 
     public GameState(Handler handler){
         super(handler);

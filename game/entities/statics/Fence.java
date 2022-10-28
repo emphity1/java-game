@@ -17,6 +17,11 @@ public class Fence extends StaticEntity {
                     (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
 
     }
+
+    @Override
+    public void die(){
+        
+    }
     
     
 }

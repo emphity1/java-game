@@ -6,20 +6,19 @@ import game.tile.Tile;
 
 public abstract class Creatures extends Entity {
 	
-	public static final int DEFAULT_HEALTH = 10;
-	public static final float DEFAULT_SPEED = 3.0f;
+	
+	public static final float DEFAULT_SPEED = 3;
 
 	//CREATURE SIZE
 	public static final int DEFAULT_CREATURE_WIDTH = 32,
 							DEFAULT_CREATURE_HEIGHT = 32;
 	
-	protected int health;
+	
 	protected float speed;
 	protected float xMove, yMove;
 
 	public Creatures(Handler handler,float x, float y, int width, int height) {
 		super(handler,x, y, width, height);
-		health = DEFAULT_HEALTH;
 		speed = DEFAULT_SPEED;
 		xMove = 0;
 		yMove = 0;
@@ -34,6 +33,11 @@ public abstract class Creatures extends Entity {
 		}
 		
 	}
+	
+	@Override
+    public void die(){
+
+    }
 
 	//COLLISION DETECTION STUFF and calculations...
 

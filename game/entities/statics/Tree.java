@@ -14,6 +14,15 @@ public class Tree extends StaticEntity {
         bounds.height = (int)(height-height/1.5f);
     }
 
+
+    public void tick(){
+        
+    }
+    @Override
+    public void die(){
+
+    }
+    
     
     public void render(Graphics g){
         g.drawImage(Assets.tree1,(int)(x - handler.getGameCamera().getxOffset()),

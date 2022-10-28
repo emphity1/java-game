@@ -5,9 +5,10 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
 
-    private boolean[] keys;
+    public boolean[] keys;
     public boolean up,down,left,right;
 
+    public boolean aUp,aDown,aLeft,aRight;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -18,6 +19,13 @@ public class KeyManager implements KeyListener {
         down = keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
+
+
+        //key for attack
+        aUp = keys[KeyEvent.VK_UP];
+        aDown = keys[KeyEvent.VK_DOWN];
+        aRight = keys[KeyEvent.VK_RIGHT];
+        aLeft = keys[KeyEvent.VK_LEFT];
 
     }
 
@@ -31,6 +39,7 @@ public class KeyManager implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         keys[e.getKeyCode()] = false;
+        System.out.print("Released");
         
     }
 

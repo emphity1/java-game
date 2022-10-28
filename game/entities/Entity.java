@@ -12,13 +12,20 @@ import java.awt.Rectangle;
 
 public abstract class Entity {
 
+	public static final int DEFAULT_HEALTH = 10;
 
 	protected Handler handler;
+	protected int health;
+	protected boolean active = true;
+
+	
 
 	protected float x;
 	protected float y;
 	protected int width;
 	protected int height;
+
+	
 
 	protected Rectangle bounds;
 
@@ -45,7 +52,7 @@ public abstract class Entity {
 		this.y = y;
 		this.height = height;
 		this.width = width;
-
+		health = DEFAULT_HEALTH;
 		this.handler = handler;
 
 		bounds = new Rectangle(0,0,width,height);
@@ -54,8 +61,21 @@ public abstract class Entity {
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
+	
+	public abstract void die();
 
 
+	//when players got damage, it diess
+	public void hurt(int amt){
+		health -= amt;
+		if(health <= 0){
+			active = false;
+			die();
+		}
+	}
+
+
+	//GETTERS AND SETTERS
 
 	public float getX() {
 		return this.x;
@@ -89,5 +109,21 @@ public abstract class Entity {
 		this.height = height;
 	}
 
+
+	public int getHealth() {
+		return this.health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public boolean isActive() {
+		return this.active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 }

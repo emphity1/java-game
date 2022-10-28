@@ -23,6 +23,12 @@ public class StaticEntity  extends Entity{
         // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public void die() {
+        // TODO Auto-generated method stub
+        
+    }
     
 
 }

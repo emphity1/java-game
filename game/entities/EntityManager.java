@@ -39,6 +39,9 @@ public class EntityManager {
         for(int i = 0;i<entities.size();i++){
             Entity e = entities.get(i);
             e.tick();
+            if(!e.isActive()){
+                entities.remove(e);
+            }
         }
         //player.tick();
         //from function compare
