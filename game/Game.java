@@ -5,6 +5,7 @@ import game.handler.Handler;
 import game.input.KeyManager;
 import game.input.MouseManager;
 import game.states.GameState;
+import game.states.MenuState;
 //import game.states.MenuState;
 import game.states.State;
 
@@ -35,6 +36,7 @@ public class Game implements Runnable {
 	
 	//input
 	private KeyManager keyManager;
+	
 
 	//camera istance
 	private GameCamera gameCamera;
@@ -43,6 +45,7 @@ public class Game implements Runnable {
 	Handler handler;
 	
 
+	//
 
 	public Game(String title, int width, int height){
 		this.width = width;
@@ -55,37 +58,25 @@ public class Game implements Runnable {
 	private void init(){
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
-
 		display.getFrame().addMouseListener(mouseManager);
 		display.getFrame().addMouseMotionListener(mouseManager);
-
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		Assets.init();
 		
 		handler = new Handler(this);
-		gameCamera = new GameCamera(handler,0, 0);
-		
-
+		gameCamera = new GameCamera(handler, 0, 0);
 		
 		gameState = new GameState(handler);
-		//menuState = new MenuState(handler);
-		
-		State.setState(gameState);
-
-        
-    }
-
-	
-	
-
+		menuState = new MenuState(handler);
+		State.setState(menuState);
+	}
 	
 	private void tick(){
 		keyManager.tick();
 		
-		if(State.getState() != null){
+		if(State.getState() != null)
 			State.getState().tick();
-		}
 	}
 	
 	private void render(){
@@ -95,17 +86,17 @@ public class Game implements Runnable {
 			return;
 		}
 		g = bs.getDrawGraphics();
-        g.clearRect(0, 0, width, height);
-		//Draw stuff
-		if(State.getState() != null){
+		//Clear Screen
+		g.clearRect(0, 0, width, height);
+		//Draw Here!
+		
+		if(State.getState() != null)
 			State.getState().render(g);
-		}
-
-		//End 
+		
+		//End Drawing!
 		bs.show();
 		g.dispose();
 	}
-	
 
     //threads stuff...
 	public void run(){

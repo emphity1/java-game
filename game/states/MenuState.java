@@ -7,6 +7,7 @@ import game.UI.ClickListener;
 import game.UI.UIImageButton;
 import game.UI.UIManager;
 import game.handler.Handler;
+import game.tile.Tile;
 
 public class MenuState extends State {
 
@@ -17,7 +18,7 @@ public class MenuState extends State {
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
 
-		uiManager.addObject(new UIImageButton(250, 250, 96, 32, Assets.btn_start, new ClickListener() {
+		uiManager.addObject(new UIImageButton(512-96, 360-32, 192, 64 ,Assets.btn_start, new ClickListener() {
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setUIManager(null);
@@ -33,6 +34,7 @@ public class MenuState extends State {
 
 	@Override
 	public void render(Graphics g) {
+		
 		uiManager.render(g);
 	}
 

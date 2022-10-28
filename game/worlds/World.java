@@ -42,6 +42,7 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 100, 100, 50, 100) );
 		entityManager.addEntity(new Tree(handler, 250, 250, 50, 100) );
 		entityManager.addEntity(new Tree(handler, 400, 250, 50, 100) );
+
 		
 		loadWorld(path);
 
