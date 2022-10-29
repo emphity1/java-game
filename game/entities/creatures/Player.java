@@ -19,6 +19,8 @@ public class Player extends Creatures {
 	private Animation animLeft;
 	private Animation animStop;
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+
+	private Animation attRight, attLeft, attUp,attDown;
 	
 	
 	
@@ -38,6 +40,11 @@ public class Player extends Creatures {
 		animRight = new Animation(500, Assets.player_right);
 		animStop = new Animation(500, Assets.player_stop);
 
+		attUp = new Animation(500, Assets.att_up);
+		attDown = new Animation(500,	Assets.att_down);
+		attLeft = new Animation(500, Assets.att_left);
+		attRight = new Animation(500, Assets.att_right);
+
 		
 
 	}
@@ -51,6 +58,10 @@ public class Player extends Creatures {
 		animRight.tick();
 		animLeft.tick();
 		animStop.tick();
+		attUp.tick();
+		attDown.tick();
+		attRight.tick();
+		attLeft.tick();
 		//movements
 		getInput();
 		move();
@@ -129,24 +140,41 @@ public class Player extends Creatures {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),  //centering our player as well
 					(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
+		//g.drawImage(getCurrentAttack(), (int) (x - handler.getGameCamera().getxOffset()),  //centering our player as well
+		//			(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		//g.setColor(Color.red);
 		//g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()), 
 		//(int)(y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 	}
 
+	//TO fix
+	private BufferedImage getCurrentAttack(){
+		if(handler.getKeyManager().aUp){
+			return attUp.getCurrentFrame();
+		}else if(handler.getKeyManager().aDown){
+			return attDown.getCurrentFrame();
+		}else if(handler.getKeyManager().aLeft){
+			return attLeft.getCurrentFrame();
+		}else{
+			return attRight.getCurrentFrame();
+		}
+		
+	}
 
+
+	//to fix
 	private BufferedImage getCurrentAnimationFrame(){
 		
 		if(xMove<0){
-			return animRight.getCurrentFrame();
+			return attRight.getCurrentFrame();
 
 		}else if(xMove>0){
-			return animLeft.getCurrentFrame();
+			return attLeft.getCurrentFrame();
 		}else if(yMove<0){
-			return animUp.getCurrentFrame();
+			return attUp.getCurrentFrame();
 
 		}else if(yMove>0){
-			return animDown.getCurrentFrame();
+			return attDown.getCurrentFrame();
 
 		}else{
 			return animStop.getCurrentFrame();
