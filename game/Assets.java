@@ -30,7 +30,7 @@ public class Assets {
         SpriteSheet FenceSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Tilesets/Fences.png"));
         SpriteSheet TreeSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic Grass Biom things 1.png"));
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/UI Big Play Button.png"));
-        SpriteSheet AttackSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/Basic Charakter Actions.png"));
+        SpriteSheet AttackSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/axe_action.png"));
 
         //player anim bufferedimg
         player_down = new BufferedImage[2];
@@ -77,14 +77,19 @@ public class Assets {
         
         //attack sprites crop
 
-        att_up[0] = AttackSheet.crop(3*8, 34*8, 3*8, 3*8);
-        att_up[1] = AttackSheet.crop(9*8,33*8,2*8,3*8);
-        att_down[0] = AttackSheet.crop(16, 26*8, 24, 24);
-        att_down[1] = AttackSheet.crop(9*8, 27*8, 16, 24);    
-        att_right[0] = AttackSheet.crop(8, 46*8, 3*8, 2*8);
-        att_right[1] = AttackSheet.crop(8*8, 46*8, 4*8, 2*8);
-        att_left[0] = AttackSheet.crop(3*8, 40*8, 3*8, 2*8);
-        att_left[1] = AttackSheet.crop(8*8, 40*8, 3*8, 2*8);
+        att_down[0] = AttackSheet.crop(0,8,24,24);
+        att_down[1] = AttackSheet.crop(24,8,24,24); 
+
+        att_up[0] = AttackSheet.crop(0,48,24,24);    
+        att_up[1] = AttackSheet.crop(32,44,24,24);
+        
+        //LEFT  AND RIGHT TO FIX
+
+        att_right[0] = AttackSheet.crop(0,88,24,24);
+        att_right[1] = AttackSheet.crop(32,88,24,24);
+
+        att_left[0] = AttackSheet.crop(0,112,24,24);
+        att_left[1] = AttackSheet.crop(32,112,24,24);
 
 
         //System.out.println(btn_start[0].getWidth());
