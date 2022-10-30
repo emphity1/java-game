@@ -60,7 +60,7 @@ public class Assets {
         player_left[1] = PlayerSheet.crop(20*8,20*8,width,height);
 
         player_stop[0] = PlayerSheet.crop(16, 16, width, height);
-        player_stop[1] = PlayerSheet.crop(8*8, 16, width, height);
+        player_stop[1] = PlayerSheet.crop(64, 16, width, height);
         
         //tiles
         grass = GrassSheet.crop(0,80, width,height);
@@ -77,19 +77,21 @@ public class Assets {
         
         //attack sprites crop
 
-        att_down[0] = AttackSheet.crop(0,8,24,24);
-        att_down[1] = AttackSheet.crop(24,8,24,24); 
+        att_down[0] = AttackSheet.crop(0,0,24,24);
+        att_down[1] = AttackSheet.crop(0,24,24,24); 
 
         att_up[0] = AttackSheet.crop(0,48,24,24);    
-        att_up[1] = AttackSheet.crop(32,44,24,24);
+        att_up[1] = AttackSheet.crop(0,80,24,24);
         
         //LEFT  AND RIGHT TO FIX
 
-        att_right[0] = AttackSheet.crop(0,88,24,24);
-        att_right[1] = AttackSheet.crop(32,88,24,24);
+        att_right[0] = AttackSheet.crop(0,158,24,24);
+        att_right[1] = AttackSheet.crop(8,182,24,24);
 
         att_left[0] = AttackSheet.crop(0,112,24,24);
-        att_left[1] = AttackSheet.crop(32,112,24,24);
+        att_left[1] = AttackSheet.crop(0,136,24,24);
+
+       
 
 
         //System.out.println(btn_start[0].getWidth());
