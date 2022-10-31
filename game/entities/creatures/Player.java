@@ -86,7 +86,7 @@ public class Player extends Creatures {
 
 		Rectangle cb = getCollisionBounds(0, 0);
 		Rectangle ar = new Rectangle();
-		int arSize  = 16;
+		int arSize  = 24;
 		ar.width = arSize;
 		ar.height = arSize;
 
