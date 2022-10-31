@@ -8,6 +8,7 @@ import game.entities.creatures.Player;
 import game.entities.statics.Fence;
 import game.entities.statics.Tree;
 import game.handler.Handler;
+import game.items.ItemManager;
 import game.tile.Tile;
 import game.utils.Utils;
 
@@ -16,12 +17,19 @@ import game.utils.Utils;
 public class World {
 
 	private Handler handler;
+
+
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
 
 	//Entities
 	private EntityManager entityManager;
+
+	//Item
+	private ItemManager itemManager;
+
+	
 
 	public EntityManager getEntityManager() {
 		return this.entityManager;
@@ -34,6 +42,7 @@ public class World {
 	public World(Handler handler, String path){
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		itemManager = new ItemManager(handler);
 		//draw fence
 		entityManager.addEntity((new Fence(handler, 50, 50)));
 		entityManager.addEntity((new Fence(handler, 50, 50+32)));
@@ -42,6 +51,7 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 100, 100, 50, 100) );
 		entityManager.addEntity(new Tree(handler, 250, 250, 50, 100) );
 		entityManager.addEntity(new Tree(handler, 400, 250, 50, 100) );
+
 
 		
 		loadWorld(path);
@@ -52,6 +62,7 @@ public class World {
 	
 	public void tick(){
 		entityManager.tick();
+		itemManager.tick();
 	}
 	
 	/* --PERFORMACE:
@@ -70,6 +81,8 @@ public class World {
 						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
+		//Items
+		itemManager.render(g);
 		//Entities
 		entityManager.render(g);
 	}
@@ -107,13 +120,29 @@ public class World {
 		}
 	}
 
-
+	///GETTERS AND SETTERS
 
 	public int getWidth(){
 		return width;
 	}
 	public int getHeight(){
 		return height;
+	}
+
+	public ItemManager getItemManager() {
+		return this.itemManager;
+	}
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
+	}
+
+	public Handler getHandler() {
+		return this.handler;
+	}
+
+	public void setHandler(Handler handler) {
+		this.handler = handler;
 	}
 	
 }

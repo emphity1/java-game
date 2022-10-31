@@ -12,7 +12,7 @@ import java.awt.Rectangle;
 
 public abstract class Entity {
 
-	public static final int DEFAULT_HEALTH = 10;
+	public static final int DEFAULT_HEALTH = 3;
 
 	protected Handler handler;
 	protected int health;

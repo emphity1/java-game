@@ -16,6 +16,7 @@ public class Assets {
     public static BufferedImage[] btn_start;
     public static BufferedImage tree1,tree2,tree3;
     public static BufferedImage[] att_up,att_down,att_right,att_left;
+    public static BufferedImage wood;
     
 
     public static final int width = 16, height = 16;
@@ -31,6 +32,8 @@ public class Assets {
         SpriteSheet TreeSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic Grass Biom things 1.png"));
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/UI Big Play Button.png"));
         SpriteSheet AttackSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/axe_action.png"));
+        SpriteSheet woodSprite = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic tools and meterials.png"));
+
 
         //player anim bufferedimg
         player_down = new BufferedImage[2];
@@ -45,9 +48,15 @@ public class Assets {
         att_left = new BufferedImage[2];
         att_right = new BufferedImage[2];
 
+
         //menu buffered img
         btn_start = new BufferedImage[2];
+
         
+        //materials and tools
+        wood = woodSprite.crop(32, 16, 16, 16);
+
+
 
         //player movements
         player_down[0] = PlayerSheet.crop(14*8,2*8,width,height);
@@ -61,11 +70,16 @@ public class Assets {
 
         player_stop[0] = PlayerSheet.crop(16, 16, width, height);
         player_stop[1] = PlayerSheet.crop(64, 16, width, height);
+
         
         //tiles
         grass = GrassSheet.crop(0,80, width,height);
+
+
         //props
         fence = FenceSheet.crop(0, 0, fenceWidth,fenceHeight);
+
+
         //trees
         tree1 = TreeSheet.crop(0, 0, 2*8, 4*8);
         tree2 = TreeSheet.crop(2*3, 0, 3*8, 4*8);
@@ -75,15 +89,15 @@ public class Assets {
         btn_start[0] =  btnSheet.crop(0,8*4,192/2,64/2);
         btn_start[1] =  btnSheet.crop(192/2,64/2,192/2,64/2);
         
+        
         //attack sprites crop
-
         att_down[0] = AttackSheet.crop(0,0,24,24);
         att_down[1] = AttackSheet.crop(0,24,24,24); 
 
         att_up[0] = AttackSheet.crop(0,48,24,24);    
         att_up[1] = AttackSheet.crop(0,80,24,24);
         
-        //LEFT  AND RIGHT TO FIX
+       
 
         att_right[0] = AttackSheet.crop(0,158,24,24);
         att_right[1] = AttackSheet.crop(8,182,24,24);
