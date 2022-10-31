@@ -17,6 +17,7 @@ public class Assets {
     public static BufferedImage tree1,tree2,tree3;
     public static BufferedImage[] att_up,att_down,att_right,att_left;
     public static BufferedImage wood;
+    public static BufferedImage inventoryScreen;
     
 
     public static final int width = 16, height = 16;
@@ -33,7 +34,7 @@ public class Assets {
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/UI Big Play Button.png"));
         SpriteSheet AttackSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/axe_action.png"));
         SpriteSheet woodSprite = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic tools and meterials.png"));
-
+        SpriteSheet invSprite = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/inventory.png"));
 
         //player anim bufferedimg
         player_down = new BufferedImage[2];
@@ -105,6 +106,10 @@ public class Assets {
         att_left[0] = AttackSheet.crop(0,112,24,24);
         att_left[1] = AttackSheet.crop(0,136,24,24);
 
+
+        //inventory
+
+        inventoryScreen = invSprite.crop(0, 8, 108, 128);
        
 
 

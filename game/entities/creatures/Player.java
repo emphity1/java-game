@@ -6,6 +6,8 @@ import game.animations.Animation;
 import game.entities.Entity;
 import game.handler.Handler;
 import game.input.KeyManager;
+import game.inventory.Inventory;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Rectangle;
@@ -24,6 +26,9 @@ public class Player extends Creatures {
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 
 	private Animation attRight, attLeft, attUp,attDown;
+
+	private Inventory inventory;
+
 	
 	
 	
@@ -48,7 +53,7 @@ public class Player extends Creatures {
 		attLeft = new Animation(500, Assets.att_left);
 		attRight = new Animation(500, Assets.att_right);
 
-		
+		inventory = new Inventory(handler);
 
 	}
 
@@ -71,6 +76,8 @@ public class Player extends Creatures {
 		handler.getGameCamera().centerOnEntity(this);
 		//attack
 		checkAttacks();
+		//inventory
+		inventory.tick();
 
 	}
 
@@ -152,11 +159,15 @@ public class Player extends Creatures {
 		}
 		
 		
-
+		
 		
 		//g.setColor(Color.red);
 		//g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()), 
 		//(int)(y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
+	}
+
+	public void postRender(Graphics g){
+		inventory.render(g);
 	}
 
 	
@@ -193,4 +204,16 @@ public class Player extends Creatures {
 
 		}
 	}
+
+
+	//GETTERS AND SETTERS
+
+	public Inventory getInventory() {
+		return this.inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	};
+	
 }
