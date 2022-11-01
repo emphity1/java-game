@@ -1,7 +1,9 @@
 package game;
 import java.awt.image.BufferedImage;
-
+import java.awt.Font;
 import javax.imageio.ImageIO;
+
+import game.UI.FontLoader;
 
 
 /*loading every images every sec is heavy
@@ -19,6 +21,7 @@ public class Assets {
     public static BufferedImage wood;
     public static BufferedImage inventoryScreen;
     
+    public static Font font;
 
     public static final int width = 16, height = 16;
     public static final int fenceWidth = 16, fenceHeight = 48;
@@ -26,6 +29,8 @@ public class Assets {
     //public static final int btnWidth = 32,  btnHeight = 32;
     //LOADING MY SPRITES AND CROPING THEM
     public static void init(){
+        //font
+        font = FontLoader.loadFont("/home/dima/Documents/GitHub/java-game/game/res/fonts/slkscr.ttf", 28);
 
         SpriteSheet GrassSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Tilesets/ground tiles/new tiles/Grass tiles v.2.png"));
         SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/Basic Charakter Spritesheet.png"));
@@ -35,6 +40,10 @@ public class Assets {
         SpriteSheet AttackSheet = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Characters/axe_action.png"));
         SpriteSheet woodSprite = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprout Lands/Objects/Basic tools and meterials.png"));
         SpriteSheet invSprite = new SpriteSheet(ImageLoader.loadImage("/game/res/textures/Sprite sheets/inventory.png"));
+
+
+        
+
 
         //player anim bufferedimg
         player_down = new BufferedImage[2];

@@ -2,9 +2,11 @@ package game.inventory;
 
 
 import game.Assets;
+import game.UI.Text;
 import game.handler.Handler;
 import game.items.Item;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -46,6 +48,8 @@ public class Inventory {
             return;
         }
         g.drawImage(Assets.inventoryScreen, 512, 318,232,272, null);
+
+        Text.drawString(g, "Rock", 300, 200, true, Color.WHITE, Assets.font);
     }
 
     //Invetory methods
